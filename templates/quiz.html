@@ -1,0 +1,15 @@
+<h1>English Vocabular Check</h1>
+<form action='/quiz_answer' method='POST'>
+    <ol>
+
+        {% for i in q %}
+               <h2> <li>What is the meaning of <u>{{i}}</u> ?</li> </h2>
+            {% for j in q[i] %}
+                <h3><input type='radio' value='{{j}}' name='{{i}}' />{{j}}</h3>
+            {% endfor %}
+            <br><br>
+        {% endfor %}
+    </ol>
+
+    <input type="submit" value="Submit" />
+</form>

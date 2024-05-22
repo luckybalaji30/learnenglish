@@ -1,0 +1,12 @@
+<h1>English Spell Check</h1>
+<form action='/spell_answer' autocomplete="off" method='POST'>
+    <ol>
+
+        {% for i in q %}
+                <h2> <li>Fill with missing letter <u>{{q[i]}}</u>   meaning is <i>{{a[i]}} </i></li> </h2>
+                <h3><input type='text' name='{{i}}' value='{{q[i][0]}}' /></h3>
+            <br><br>
+        {% endfor %}
+    </ol>
+    <input type="submit" value="Submit" />
+</form>

@@ -1,0 +1,44 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+}
+</style>
+<h1 style="color:Orange">English Vocabular Check Answer</h1>
+ <h2 style="color:Blue;"> No of question answered corrctly is {{count}} </h2>
+    <ol>
+<table>
+  <tr>
+    <th> Word</th>
+    <th> Correct Meaning </th>
+    <th> Your Answer </th>
+  </tr>
+        {% for i in ca %}
+        <tr>
+                {% if cad[i] %}
+                  <th>{{i}}</th>
+                  <th>{{ca[i]}}</th>
+                  <th>Correct</th>
+                </p>
+                {% else %}
+                  <th>{{i}}</th>
+                  <th>{{ca[i]}}</th>
+                  <th>WRONG</th>
+                {% endif %}
+          </tr>
+        {% endfor %}
+
+      </table>
+    </ol>
+<form>
+    <th><button formaction="/", style="width: 40%; height: 10%; background-color: Yellow; color: black;">Back to Main Page</button></th>
+</form>
