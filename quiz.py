@@ -14,8 +14,9 @@ try:
     os.mkdir(f"{os.getcwd()}/upload")
 except:
     pass
+
 # global variables
-UPLOAD_FOLDER = os.getcwd()
+UPLOAD_FOLDER = f"{os.getcwd()}/upload"
 ALLOWED_EXTENSIONS = {'csv'}
 filename="pranavawordlist.csv"
 
