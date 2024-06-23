@@ -10,8 +10,13 @@ import pandas as pd
 
 app = Flask(__name__)
 
+try:
+    os.mkdir(f"{os.getcwd()}/upload")
+except:
+    pass
+
 # global variables
-UPLOAD_FOLDER = '/Users/balajis/Balaji/Learning/Python/pranav01/'
+UPLOAD_FOLDER = f"{os.getcwd()}/upload"
 ALLOWED_EXTENSIONS = {'csv'}
 filename="pranavawordlist.csv"
 
