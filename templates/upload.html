@@ -1,7 +1,16 @@
 <!doctype html>
     <title>Upload new File</title>
+    <body>
+    <p id="recommendation" style="color: green;">
+        Recommended file name: <strong>wordsbank.csv</strong>
+    </p>
+    <p id="errorMessage" style="color: red; "></p>
+
     <h1>Upload new File</h1>
     <form action='/uploadsubmit' method=post enctype=multipart/form-data>
-      <input type=file name=file>
+      <input type=file name=file accept=".csv">
+      </br></br>
       <input type=submit value=Upload>
+
     </form>
+  </body>
