@@ -1,12 +1,14 @@
-<h1>English Spell Check</h1>
-<form action='/spell_answer' autocomplete="off" method='POST'>
-    <ol>
-
-        {% for i in q %}
-                <h2> <li>Fill with missing letter <u>{{q[i]}}</u>   meaning is <i>{{a[i]}} </i></li> </h2>
-                <h3><input type='text' name='{{i}}' value='{{q[i][0]}}' /></h3>
-            <br><br>
-        {% endfor %}
-    </ol>
-    <input type="submit" value="Submit" />
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Spelling quiz</title></head>
+<body>
+<h1>Spelling quiz</h1>
+<form method="post" action="{{ url_for('spell_answers') }}" autocomplete="off">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <ol>{% for word, masked in q.items() %}
+    <li><label>Complete {{ masked }} ({{ a[word] }})
+      <input type="text" name="{{ word }}" required autocomplete="off">
+    </label></li>
+  {% endfor %}</ol>
+  <button type="submit">Submit answers</button>
 </form>
+</body></html>

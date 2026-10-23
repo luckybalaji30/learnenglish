@@ -1,43 +1,4 @@
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-</style>
-<h1 style="color:Orange">English spell Check Answer</h1>
- <h2 style="color:Blue;"> No of question answered corrctly is {{count}} </h2>
-    <ol>
-<table>
-  <tr>
-    <th> Word</th>
-    <th> Correct Meaning </th>
-    <th> Your Answer </th>
-  </tr>
-        {% for i in ca %}
-        <tr>
-                {% if cad[i] %}
-                  <th>{{i}}</th>
-                  <th>{{ca[i]}}</th>
-                  <th>Correct</th>
-                </p>
-                {% else %}
-                  <th>{{i}}</th>
-                  <th>{{ca[i]}}</th>
-                  <th>WRONG</th>
-                {% endif %}
-          </tr>
-        {% endfor %}
-
-      </table>
-    </ol>
-<form>
-    <th><button formaction="/mainpage", style="width: 40%; height: 10%; background-color: Yellow; color: black;">Back to Main Page</button></th>
-</form>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Spelling results</title></head>
+<body><h1>Correct answers: {{ count }} of {{ ca|length }}</h1><ol>
+{% for word, meaning in ca.items() %}<li>{{ word }} ({{ meaning }}) — {{ 'Correct' if cad[word] else 'Incorrect' }}</li>{% endfor %}
+</ol><a href="{{ url_for('index') }}">Back to dashboard</a></body></html>

@@ -1,16 +1,13 @@
 <!doctype html>
-    <title>Upload new File</title>
-    <body>
-    <p id="recommendation" style="color: green;">
-        Recommended file name: <strong>wordsbank.csv</strong>
-    </p>
-    <p id="errorMessage" style="color: red; "></p>
-
-    <h1>Upload new File</h1>
-    <form action='/uploadsubmit' method=post enctype=multipart/form-data>
-      <input type=file name=file accept=".csv">
-      </br></br>
-      <input type=submit value=Upload>
-
-    </form>
-  </body>
+<html lang="en"><head><meta charset="utf-8"><title>Upload vocabulary</title></head>
+<body>
+<h1>Upload Word/Meaning CSV</h1>
+{% for message in get_flashed_messages() %}<p role="alert">{{ message }}</p>{% endfor %}
+<p>Upload a UTF-8 CSV file with columns Word and Meaning (maximum 2 MB). The current word bank will be replaced.</p>
+<form method="post" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <input type="file" name="file" accept=".csv,text/csv" required>
+  <button type="submit">Upload</button>
+</form>
+<a href="{{ url_for('index') }}">Back</a>
+</body></html>
