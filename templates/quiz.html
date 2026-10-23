@@ -1,15 +1,14 @@
-<h1>English Vocabular Check</h1>
-<form action='/quiz_answer' method='POST'>
-    <ol>
-
-        {% for i in q %}
-               <h2> <li>What is the meaning of <u>{{i}}</u> ?</li> </h2>
-            {% for j in q[i] %}
-                <h3><input type='radio' value='{{j}}' name='{{i}}' />{{j}}</h3>
-            {% endfor %}
-            <br><br>
-        {% endfor %}
-    </ol>
-
-    <input type="submit" value="Submit" />
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Vocabulary quiz</title></head>
+<body>
+<h1>Vocabulary quiz</h1>
+<form method="post" action="{{ url_for('quiz_answers') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <ol>{% for word, options in q.items() %}
+    <li><fieldset><legend>What is the meaning of {{ word }}?</legend>
+      {% for option in options %}<label><input type="radio" name="{{ word }}" value="{{ option }}" required>{{ option }}</label>{% endfor %}
+    </fieldset></li>
+  {% endfor %}</ol>
+  <button type="submit">Submit answers</button>
 </form>
+</body></html>
